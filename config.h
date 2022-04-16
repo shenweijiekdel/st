@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "JetBrainsMono Nerd Font:pixelsize=18:antialias=true:autohint=true";
+static char *font = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
 static int borderpx = 2;
 
 /*
@@ -16,7 +16,7 @@ static int borderpx = 2;
  * 4: value of shell in /etc/passwd
  * 5: value of shell in config.h
  */
-static char *shell = "/bin/zsh";
+static char *shell = "/bin/sh";
 char *utmp = NULL;
 /* scroll program: to enable use a string like "scroll" */
 char *scroll = NULL;
@@ -91,40 +91,37 @@ char *termname = "st-256color";
  *
  *	stty tabs
  */
-unsigned int tabspaces = 4;
-
-/* bg opacity */
-float alpha = 0.8;
+unsigned int tabspaces = 8;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
 	/* 8 normal colors */
-	"#1e2229",
-	"#ed1515",
-	"#44853a",
-	"#f67400",
-	"#1d99f3",
-	"#9b59b6",
-	"#1abc9c",
-	"#fcfcfc",
+	"black",
+	"red3",
+	"green3",
+	"yellow3",
+	"blue2",
+	"magenta3",
+	"cyan3",
+	"gray90",
 
 	/* 8 bright colors */
-	"#7f8c8d",
-	"#c0392b",
-	"#55a649",
-	"#fdbc4b",
-	"#3daee9",
-	"#8e44ad",
-	"#16a085",
-	"#ffffff",
+	"gray50",
+	"red",
+	"green",
+	"yellow",
+	"#5c5cff",
+	"magenta",
+	"cyan",
+	"white",
 
 	[255] = 0,
 
 	/* more colors can be added after 255 to use with DefaultXX */
 	"#cccccc",
 	"#555555",
-	"#eeeeff", /* default foreground colour */
-	"#001111", /* default background colour */
+	"gray90", /* default foreground colour */
+	"black", /* default background colour */
 };
 
 
@@ -204,6 +201,10 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
 	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
+	{ MODKEY,            XK_u,    kscrollup,      {.i = 1} },
+	{ MODKEY,            XK_d,   kscrolldown,    {.i = 1} },
+	{ MODKEY|ControlMask,            XK_u,    kscrollup,      {.i = -1} },
+	{ MODKEY|ControlMask,            XK_d,   kscrolldown,    {.i = -1} },
 };
 
 /*
